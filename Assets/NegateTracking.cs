@@ -5,11 +5,17 @@ using UnityEngine.XR;
 
 public class NegateTracking : MonoBehaviour
 {
+    private void Start()
+    {
+        UnityEngine.XR.InputTracking.disablePositionalTracking = true;
+        transform.GetChild(0).localPosition = Vector3.zero;
+    }
 
     void Update()
     {
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        Debug.Log(transform.position);
+
+        transform.localRotation = Quaternion.Inverse(InputTracking.GetLocalRotation(XRNode.CenterEye));
+
     }
+    
 }

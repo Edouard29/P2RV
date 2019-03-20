@@ -13,13 +13,16 @@ public class RedirectionField : MonoBehaviour
 
 	//Debug
 	public GameObject redirectionSphere;
-	/// <summary>
-	/// Valeur du champ de redirection en tout point.
-	/// Interpole le champ discret.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="z"></param>
-	/// <returns></returns>
+    /// <summary>
+    /// Valeur du champ de redirection en tout point.
+    /// Interpole le champ discret.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="z"></param>
+    /// <returns></returns>
+
+    public GameObject real_room;
+    public GameObject virtual_room;
 
 	public Vector3 this[float x, float z]{
 		get {
@@ -66,7 +69,14 @@ public class RedirectionField : MonoBehaviour
 
 	private void Start()
 	{
-		CalculateField();
+        // Activate the real room in order to calculate the right field
+        virtual_room.SetActive(false);
+        real_room.SetActive(true);
+
+        CalculateField();
+
+        real_room.SetActive(false);
+        virtual_room.SetActive(true);
 
 		//Debug pour voir le champ discret
 		int i = 0;
