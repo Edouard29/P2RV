@@ -75,10 +75,11 @@ public class RedirectionField : MonoBehaviour
 
         CalculateField();
 
-        real_room.SetActive(false);
+        real_room.SetActive(true);
         virtual_room.SetActive(true);
 
 		//Debug pour voir le champ discret
+		/*
 		int i = 0;
 		int W = (int)(samplingDensity * fieldWidth);
 		foreach (KeyValuePair<int, Vector3> pair in discreteField)
@@ -90,6 +91,7 @@ public class RedirectionField : MonoBehaviour
 			go.name = i.ToString();
 			i++;
 		}
+		*/
 	}
 
 	/// <summary>
