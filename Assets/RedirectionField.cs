@@ -10,6 +10,7 @@ public class RedirectionField : MonoBehaviour
 	public float fieldWidth, fieldLength;
 	public float samplingDensity; //points per meter
 	public int raysPerPoint;
+    public float redirectionPower = 1;
 
 	//Debug
 	public GameObject redirectionSphere;
@@ -116,7 +117,7 @@ public class RedirectionField : MonoBehaviour
 					Physics.Raycast(ray, out hit);
 
 					//Calcul
-					redirection += -1 / hit.distance * direction; 
+					redirection += -1 / Mathf.Pow(hit.distance,redirectionPower) * direction; 
 				}
 
 				discreteField.Add(W*i+j, redirection);
